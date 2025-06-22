@@ -22,11 +22,8 @@
       Reset Score
     </button>
     <script>
-      const score = {
-        wins: 0,
-        losses: 0,
-        ties: 0,
-      };
+      const score = JSON.parse(localStorage.getItem("score"));
+
       function getComputerMove() {
         const randomNumber = Math.random();
 
@@ -67,6 +64,8 @@
           console.log("You lose!");
           score.losses++;
         }
+
+        localStorage.setItem("score", JSON.stringify(score));
 
         console.log(`Computer picked: ${computerMove}`);
         console.log(result);
